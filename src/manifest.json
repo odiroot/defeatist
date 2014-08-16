@@ -1,0 +1,33 @@
+{
+    "manifest_version": 2,
+    "name": "__MSG_appName__",
+    "description": "__MSG_appDescription__",
+    "version": "0.0.1",
+    "icons": {
+        "16": "img/icon-16.png",
+        "128": "img/icon-128.png"
+    },
+    "default_locale": "en",
+    "background": {
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "http://www.reddit.com/",
+                "https://pay.reddit.com/",
+
+                "http://www.reddit.com/?count*",
+                "https://pay.reddit.com/?count*",
+
+                "http://www.reddit.com/r/all*",
+                "https://pay.reddit.com/r/all*"
+            ],
+            "run_at": "document_end",
+            "all_frames": false,
+            "js": [
+                "js/zepto.min.js",
+                "js/content.js"
+            ]
+        }
+    ]
+}

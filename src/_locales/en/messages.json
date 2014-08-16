@@ -1,0 +1,10 @@
+{
+    "appName": {
+        "message": "Defeatist for Reddit",
+        "description": "The name of the application"
+    },
+    "appDescription": {
+        "message": "Downvotes and hides posts from unwanted subreddits.",
+        "description": "The description of the application"
+    }
+}
