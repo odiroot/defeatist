@@ -1,10 +1,11 @@
 /* global $ */
-const DOWNVOTE = 1;
-const HIDE = 2;
+'use strict';
+var DOWNVOTE = 1;
+var HIDE = 2;
 
 
 // Unwanted subreddit configuration (subrredit : flags).
-const UNWANTED = {
+var UNWANTED = {
     'trees': DOWNVOTE | HIDE,
     'GlobalOffensive': DOWNVOTE
 };
