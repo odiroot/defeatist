@@ -30,5 +30,8 @@
                 "js/content.js"
             ]
         }
+    ],
+    "permissions": [
+        "storage"
     ]
 }
