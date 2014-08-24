@@ -18,7 +18,7 @@ function writeSubreddits(subreddits) {
 
 
 function ConfigTable(config, callback) {
-    this.config = config;
+    this.config = config || {};
     this.callback = callback;
 
     this.$table = $('table');
