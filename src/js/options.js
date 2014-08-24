@@ -99,12 +99,21 @@ function main() {
     });
 
     // Handling add subreddit form.
-    $('.add button').click(function() {
-        var name = $('.add input').val().trim();
+    var $input = $('.add input');
+    function add() {
+        var name = $input.val().trim();
         if(!name) {
             return;
         }
         table.addSub(name);
+        $input.val('');
+    }
+    $('.add button').click(add);
+    $input.keyup(function(event){
+        if(event.keyCode === 13)
+        {
+            add();
+        }
     });
 }
 
