@@ -31,8 +31,11 @@ ConfigTable.prototype.render = function render() {
     this.fillTable();
 };
 
-ConfigTable.prototype.update = function() {
+ConfigTable.prototype.update = function(noRender) {
     this.callback(this.config);
+    if(noRender) {
+        return;
+    }
     this.render();
 };
 
@@ -81,12 +84,12 @@ ConfigTable.prototype.addSub = function addSub(name) {
 
 ConfigTable.prototype.updateHide = function updateHide(name, event) {
     this.config[name].hide = event.target.checked;
-    this.update();
+    this.update(true);
 };
 
 ConfigTable.prototype.updateDownvote = function updateDownvote(name, event) {
     this.config[name].downvote = event.target.checked;
-    this.update();
+    this.update(true);
 };
 
 

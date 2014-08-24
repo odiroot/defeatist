@@ -1,14 +1,5 @@
 /* global $ */
 'use strict';
-var DOWNVOTE = 1;
-var HIDE = 2;
-
-
-// Unwanted subreddit configuration (subrredit : flags).
-var UNWANTED = {
-    'trees': DOWNVOTE | HIDE,
-    'GlobalOffensive': DOWNVOTE
-};
 
 
 function isLoggedIn() {
@@ -42,12 +33,6 @@ function getSubreddit($link) {
 }
 
 
-function getLinkFlags($link) {
-    var sub = getSubreddit($link);
-    return UNWANTED[sub];
-}
-
-
 function downvoteLink(link, delay) {
     var $link = $(link),
         $arrow = $link.find('.arrow.down');
@@ -68,26 +53,28 @@ function hideLink(link, delay) {
 }
 
 
-function workOnLinks($links) {
-    var flags,
+function workOnLinks(subreddits, $links) {
+    var name,
+        config,
         delay,
         $link;
 
     $links.forEach(function(link, index) {
         $link = $(link);
-        flags = getLinkFlags($link);
+        name = getSubreddit($link);
+        config = subreddits[name];
+
         // Ignore non-configured subreddits.
-        if(!flags) {
+        if(!config) {
             return;
         }
 
         delay = (index * 123) % 100;
 
-        if(flags & DOWNVOTE) {
+        if(config.downvote) {
             downvoteLink(link, delay);
         }
-
-        if(flags & HIDE) {
+        if(config.hide) {
             hideLink(link, delay + 32);
         }
     });
@@ -101,7 +88,14 @@ function init() {
     }
 
     var $links = findLinks();
-    workOnLinks($links);
+
+    // Load subreddit config and work!
+    chrome.storage.sync.get('subreddits', function(items) {
+        if(!items.subreddits) {
+            return;  // Nothing to do.
+        }
+        workOnLinks(items.subreddits, $links);
+    });
 }
 
 
