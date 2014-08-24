@@ -65,6 +65,8 @@ ConfigTable.prototype.renderRow = function renderRow(name, config) {
 
 ConfigTable.prototype.listenRow = function listenRow($row, name) {
     $row.on('click', '.remove', this.removeSub.bind(this, name));
+    $row.on('click', '.hide', this.updateHide.bind(this, name));
+    $row.on('click', '.downvote', this.updateDownvote.bind(this, name));
 };
 
 ConfigTable.prototype.removeSub = function(name) {
@@ -74,6 +76,16 @@ ConfigTable.prototype.removeSub = function(name) {
 
 ConfigTable.prototype.addSub = function addSub(name) {
     this.config[name] = {};
+    this.update();
+};
+
+ConfigTable.prototype.updateHide = function updateHide(name, event) {
+    this.config[name].hide = event.target.checked;
+    this.update();
+};
+
+ConfigTable.prototype.updateDownvote = function updateDownvote(name, event) {
+    this.config[name].downvote = event.target.checked;
     this.update();
 };
 
