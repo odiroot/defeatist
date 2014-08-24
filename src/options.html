@@ -2,8 +2,25 @@
 <html>
 <head>
     <title>Defeatist for Reddit - Options</title>
+    <link rel="stylesheet" href="css/options.css">
+
     <script src="js/zepto.min.js" type="text/javascript"></script>
     <script src="js/options.js" type="text/javascript"></script>
+
+    <script type="text/template" id="tableRow">
+        <tr>
+            <td class="name"></td>
+            <td>
+                <input type="checkbox" class="hide">
+            </td>
+            <td>
+                <input type="checkbox" class="downvote">
+            </td>
+            <td class="action">
+                <button class="remove">Remove</button>
+            </td>
+        </tr>
+    </script>
 </head>
 
 <body>
@@ -23,24 +40,17 @@
     <table>
         <thead>
             <tr>
-                <th>Name</th>
+                <th class="name">Name</th>
                 <th>Hide</th>
                 <th>Downvote</th>
-                <th>*</th>
+                <th class="action">*</th>
             </tr>
         </thead>
 
         <tbody>
             <tr>
-                <td>example</td>
-                <td>
-                    <input type="checkbox">
-                </td>
-                <td>
-                    <input type="checkbox">
-                </td>
-                <td>
-                    <button>Remove</button>
+                <td colspan="4">
+                    No subreddits configured.
                 </td>
             </tr>
         </tbody>

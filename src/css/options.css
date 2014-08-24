@@ -1,0 +1,27 @@
+table {
+    width: 500px;
+
+    border: 1px solid black;
+}
+
+table thead {
+    background-color: lightgray;
+}
+
+table th,
+table td {
+    padding-right: 5px;
+    padding-left: 5px;
+
+    text-align: center;
+}
+
+th.name,
+td.name {
+    width: 250px;
+}
+
+th.action,
+td.action {
+    width: 100px;
+}
